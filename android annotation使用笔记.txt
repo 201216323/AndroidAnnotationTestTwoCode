@@ -1,0 +1,85 @@
+﻿一些常用注释的使用方法：
+@AfterInject 定义的方法在类的构造方法执行后执行
+@AfterTextChange定义的方法在TextView及其子类的Text属性改变后执行
+@AfterViews 定义的方法在setContentView后执行
+@Background 定义的方法在后台线程执行
+@BeforeTextChange 定义的方法在TextView及其子类的Text属性改变前执行
+@Click 定义点击监听器
+@EActivity 在Activity中启用Annotations
+@EProvider 在 ContentProvider中启用Annotations
+@EReceive 在BroadcastReceiver中启用Annotations
+@EService 在Service中启用Annotations
+@EView 在自定义的View的子类中启用Annotations
+@Fullscreen 全屏
+@NoTitle 无标题栏
+@EBean 这个普通只能有一个构造函数，这个构造函数要不是没有参数，或者只有一个Context的参数
+@Bean的标签每次都会创建一个实例,所以不能继承一个使用@EBean的类 
+@RootContext
+Activity activity; 在普通类中引入它所在的Activity或者Service的Context
+@RootContext
+Service service;  
+  
+android:state_pressed 是否按下，如一个按钮触摸或者点击。
+android:state_focused 是否取得焦点，比如用户选择了一个文本框。
+android:state_hovered 光标是否悬停，通常与focused state相同，它是4.0的新特性
+android:state_selected 被选中，它与focus state并不完全一样，如一个list view 被选中的时候，它里面的各个子组件可能通过方向键，被选中了。
+android:state_checkable 组件是否能被check。如：RadioButton是可以被check的。
+android:state_checked 被checked了，如：一个RadioButton可以被check了。
+android:state_enabled 能够接受触摸或者点击事件
+android:state_activated 被激活(这个麻烦举个例子，不是特明白)
+android:state_window_focused 应用程序是否在前台，当有通知栏被拉下来或者一个对话框弹出的时候应用程序就不在前台了
+android:indeterminateDuration="700" 指定转速
+
+
+当然上面提到的SimpleDraweeView只是Drawee其中的控件，没有什么很特别的需求使用它就够了，下面贴一下它里面的一些属性，方便食用的时候查找
+
+<com.facebook.drawee.view.SimpleDraweeView 
+    android:id="@+id/image_view" 
+    android:layout_width="300dp" 
+    android:layout_height="300dp" 
+    fresco:fadeDuration="300" 
+    fresco:actualImageScaleType="focusCrop" 
+    fresco:placeholderImage="@color/wait_color" 
+    fresco:placeholderImageScaleType="fitCenter" 
+    fresco:failureImage="@drawable/error" 
+    fresco:failureImageScaleType="centerInside" 
+    fresco:retryImage="@drawable/retrying" 
+    fresco:retryImageScaleType="centerCrop" 
+    fresco:progressBarImage="@drawable/progress_bar" 
+    fresco:progressBarImageScaleType="centerInside" 
+    fresco:progressBarAutoRotateInterval="1000" 
+    fresco:backgroundImage="@color/blue" 
+    fresco:overlayImage="@drawable/watermark" 
+    fresco:pressedStateOverlayImage="@color/red" 
+    fresco:roundAsCircle="false" 
+    fresco:roundedCornerRadius="1dp" 
+    fresco:roundTopLeft="true" 
+    fresco:roundTopRight="false" 
+    fresco:roundBottomLeft="false" 
+    fresco:roundBottomRight="true" 
+    fresco:roundWithOverlayColor="@color/corner_color" 
+    fresco:roundingBorderWidth="2dp" 
+    fresco:roundingBorderColor="@color/border_color" 
+  /> 
+简单介绍一下上面的属性：
+
+placeholderImage就是所谓的展位图啦，在图片没有加载出来之前你看到的就是它
+
+failureIamge看到名字就知道是什么了，图片加载失败时显示的图片就是它了
+
+retryImage图片加载失败时显示，提示用户点击重新加载，重复加载4次还是没有加载出来的时候才会显示failureImage的图片
+
+progressBarImage进度条图片
+
+backgroundImage背景图片，这里的背景图片首先被绘制
+
+overlayImage设置叠加图，在xml中只能设置一张叠加图片，如果需要多张图片的话，需要在java代码中设置哦
+
+pressedStateOverlayImage设置点击状态下的叠加图，此叠加图不能缩放
+
+ImageScaleType这个就是各种各样的图片缩放样式了，center，centerCrop，fouseCrop，centerInside，fitCenter，fitStart，fitEnd，fitXY
+
+getX()是表示Widget相对于自身左上角的x坐标,而getRawX()是表示相对于屏幕左上角的x坐标值
+(注意:这个屏幕左上角是手机屏幕左上角,不管activity是否有titleBar或是否全屏幕),getY(),getRawY()一样的道理
+
+
